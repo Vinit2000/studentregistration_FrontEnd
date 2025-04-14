@@ -4,6 +4,7 @@ import { Container, Form, Button, Alert, Spinner, InputGroup } from 'react-boots
 import { useNavigate, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+
 const Signup = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const [error, setError] = useState('');
@@ -12,7 +13,9 @@ const Signup = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
 
-  const baseURL = "https://studentregistration-y1le.onrender.com";
+
+
+const baseURL = "https://studentregisteration.onrender.com"
 
   const onSubmit = async (data) => {
     setLoading(true);
@@ -28,9 +31,11 @@ const Signup = () => {
       setLoading(false);
     }
   };
+
   const togglePassword = () => setShowPassword(!showPassword);
   const toggleConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
   const password = watch('password');
+
   return (
     <Container className="d-flex justify-content-center align-items-center min-vh-100">
       <div className="w-100" style={{ maxWidth: '450px', padding: '20px', backgroundColor: '#fff', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
@@ -41,8 +46,11 @@ const Signup = () => {
         <p className="text-center text-muted mb-4">
           Please fill in the details to create your account.
         </p>
+
         {error && <Alert variant="danger">{error}</Alert>}
+
         <Form onSubmit={handleSubmit(onSubmit)}>
+
           {/* Name Field */}
           <Form.Group className="mb-3">
             <Form.Label>Name</Form.Label>
@@ -52,6 +60,7 @@ const Signup = () => {
             />
             {errors.name && <small className="text-danger">{errors.name.message}</small>}
           </Form.Group>
+
           {/* Email Field */}
           <Form.Group className="mb-3">
             <Form.Label>Email</Form.Label>
@@ -65,6 +74,7 @@ const Signup = () => {
             />
             {errors.email && <small className="text-danger">{errors.email.message}</small>}
           </Form.Group>
+
           {/* Phone Field */}
           <Form.Group className="mb-3">
             <Form.Label>Phone</Form.Label>
@@ -77,6 +87,7 @@ const Signup = () => {
             />
             {errors.phone && <small className="text-danger">{errors.phone.message}</small>}
           </Form.Group>
+
           {/* City Field */}
           <Form.Group className="mb-3">
             <Form.Label>City</Form.Label>
@@ -86,6 +97,7 @@ const Signup = () => {
             />
             {errors.city && <small className="text-danger">{errors.city.message}</small>}
           </Form.Group>
+
           {/* Gender Field */}
           <Form.Group className="mb-3">
             <Form.Label>Gender</Form.Label>
@@ -105,6 +117,7 @@ const Signup = () => {
             </div>
             {errors.gender && <small className="text-danger">{errors.gender.message}</small>}
           </Form.Group>
+
           {/* Courses Field */}
           <Form.Group className="mb-3">
             <Form.Label>Courses</Form.Label>
@@ -114,6 +127,7 @@ const Signup = () => {
             />
             {errors.courses && <small className="text-danger">{errors.courses.message}</small>}
           </Form.Group>
+
           {/* Password Field */}
           <Form.Group className="mb-3">
             <Form.Label>Password</Form.Label>
@@ -132,6 +146,7 @@ const Signup = () => {
             </InputGroup>
             {errors.password && <small className="text-danger">{errors.password.message}</small>}
           </Form.Group>
+
           {/* Confirm Password Field */}
           <Form.Group className="mb-3">
             <Form.Label>Confirm Password</Form.Label>
@@ -150,6 +165,7 @@ const Signup = () => {
             </InputGroup>
             {errors.confirmPassword && <small className="text-danger">{errors.confirmPassword.message}</small>}
           </Form.Group>
+
           {/* Submit Button */}
           <Button
             type="submit"
@@ -167,6 +183,7 @@ const Signup = () => {
             )}
           </Button>
         </Form>
+
         {/* Link to Login */}
         <div className="mt-3 text-center">
           Already have an account? <Link to="/login">Login here</Link>
@@ -175,4 +192,5 @@ const Signup = () => {
     </Container>
   );
 };
+
 export default Signup;

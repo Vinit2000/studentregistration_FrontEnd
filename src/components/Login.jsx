@@ -3,14 +3,17 @@ import { useNavigate, Link } from 'react-router-dom'; // make sure Link is impor
 import axios from 'axios';
 import { Container, Form, Button, Alert, Spinner } from 'react-bootstrap';
 import { jwtDecode } from 'jwt-decode';
+
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  
   const navigate = useNavigate();
 
-const baseURL = "https://studentregistration-y1le.onrender.com";
+
+const baseURL = "https://studentregisteration.onrender.com"
 
   const handleLogin = async () => {
     setLoading(true);
@@ -19,12 +22,15 @@ const baseURL = "https://studentregistration-y1le.onrender.com";
         email,
         password,
       });
+
       if (response.data.token) {
         const token = response.data.token;
         localStorage.setItem('authToken', token);
+
         const decoded = jwtDecode(token);
         const username = decoded.username || decoded.name || decoded.email;
         localStorage.setItem('username', username);
+
         onLogin(username);
         navigate('/students');
       } else {
@@ -37,6 +43,7 @@ const baseURL = "https://studentregistration-y1le.onrender.com";
       setLoading(false);
     }
   };
+
   return (
     <Container className="d-flex justify-content-center align-items-center vh-100">
       <div className="w-100" style={{ maxWidth: '400px' }}>
@@ -45,7 +52,9 @@ const baseURL = "https://studentregistration-y1le.onrender.com";
           Welcome to Student Registration
         </h2>
         <h2 className="text-center mb-4">Login</h2>
+
         {error && <Alert variant="danger">{error}</Alert>}
+
         <Form>
           <Form.Group className="mb-3">
             <Form.Label>Email</Form.Label>
@@ -56,6 +65,7 @@ const baseURL = "https://studentregistration-y1le.onrender.com";
               onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
+
           <Form.Group className="mb-3">
             <Form.Label>Password</Form.Label>
             <Form.Control
@@ -65,6 +75,7 @@ const baseURL = "https://studentregistration-y1le.onrender.com";
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
+
           <Button
             variant="primary"
             className="w-100"
@@ -81,6 +92,7 @@ const baseURL = "https://studentregistration-y1le.onrender.com";
             )}
           </Button>
         </Form>
+
         {/* Create Account Link */}
         <div className="mt-3 text-center">
           <span>Don't have an account? </span>
@@ -90,4 +102,5 @@ const baseURL = "https://studentregistration-y1le.onrender.com";
     </Container>
   );
 };
+
 export default Login;
