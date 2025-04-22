@@ -13,7 +13,7 @@ const Login = ({ onLogin }) => {
   const navigate = useNavigate();
 
 
-const baseURL = "https://studentregisteration.onrender.com"
+const baseURL = "https://student-registration-zduo.onrender.com"
 
   const handleLogin = async () => {
     setLoading(true);

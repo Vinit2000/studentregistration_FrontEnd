@@ -22,7 +22,7 @@ const StudentList = ({searchTerm}) => {
   
 
 
-  const baseURL = 'https://studentregisteration.onrender.com';
+  const baseURL = 'https://student-registration-zduo.onrender.com';
 
 
   async function getData  () {
@@ -98,7 +98,7 @@ try {
 
   return (
     <Container className="my-4">
-      <h2 className="mb-4 text-center">Student List {students.length}</h2>
+      <h2 className="mb-4 text-center">Showing List of {students.length} Students</h2>
 {/* // Modal for editing student */}
 <EditStudentModal 
  show={showModal}

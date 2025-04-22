@@ -15,7 +15,7 @@ const Signup = () => {
 
 
 
-const baseURL = "https://studentregisteration.onrender.com"
+const baseURL = "https://studentregistration-y1le.onrender.com"
 
   const onSubmit = async (data) => {
     setLoading(true);
